@@ -1,0 +1,57 @@
+WebApp engine
+
+Вход:
+строка 1: 
+	номер N - количество строк шаблона (template) формата HTML
+строка 2:
+	JSON со значениями (value) в строковом виде
+строки [3, N + 2]:
+	разметка формата HTML с ключами вида {key} в качестве заменяемого текста 
+
+Выход:
+  шаблон, заполненный данными из json. Производится замена всех вхождений. Если шаблон не содержит ключа из json: bad template.
+  Заменяемый текст должен выводится с учетом \n, \t и без экранирующих символов '\'.
+
+
+Пример
+Вход:
+16
+{"username":"qwerty", "password":"йцукен123", "options":"<option value=\"Option1\"></option>\n\t<option value=\"Option2\"></option>\n\t<option value=\"Option3\"></option>"}
+<form>
+  <label for="username">{username}</label>
+  <input type="text" name="username" id="username" />
+  <label for="password">{password}</label>
+  <input type="password" name="password" id="password" />
+  <input list="Options" />
+  <datalist id="Options">
+	{options}
+  </datalist>
+  <datalist id="Options">
+	{options}
+  </datalist>
+  <input type="submit" value="Submit" />
+  <input type="color" />
+  <input type="checkbox" name="correct" value="correct" />Correct
+</form>
+
+Выход:
+<form>
+  <label for="username">qwerty</label>
+  <input type="text" name="username" id="username" />
+  <label for="password">йцукен123</label>
+  <input type="password" name="password" id="password" />
+  <input list="Options" />
+  <datalist id="Options">
+	<option value="Option1"></option>
+	<option value="Option2"></option>
+	<option value="Option3"></option>
+  </datalist>
+  <datalist id="Options">
+	<option value="Option1"></option>
+	<option value="Option2"></option>
+	<option value="Option3"></option>
+  </datalist>
+  <input type="submit" value="Submit" />
+  <input type="color" />
+  <input type="checkbox" name="correct" value="correct" />Correct
+</form>
